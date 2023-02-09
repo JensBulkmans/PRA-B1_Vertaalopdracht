@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpReg": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
