@@ -16,6 +16,7 @@ namespace CSharpReg
             decimal dagTotaal = 0;
             int aantalBonnen = 0;
             decimal dagTotaalTerug = 0;
+            string retourRedenen = "";
 
             while (keuze != "9")
             {
@@ -38,6 +39,7 @@ namespace CSharpReg
                     string bonString = "";
                     while (bestelKeuze != "9")
                     {
+                        Console.Clear();
                         Console.WriteLine("========= BON MENU =========");
                         Console.WriteLine("Bon " + aantalBonnen.ToString());
                         Console.WriteLine("1. Volwassene                     € 19,-");
@@ -104,15 +106,35 @@ namespace CSharpReg
                         }
                     }
                 }
-                // TODO: If-statement corrigeren
-                else if (keuze == 2)
+                else if (keuze == "2")
                 {
-                    // TODO: Afmaken
+                    Console.WriteLine("Uitvoeren Terugbetaling");
+
+                    Console.WriteLine("Bedrag originele bon:");
+                    decimal terugTeGeven = decimal.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Reden retour:");
+                    string reden = Console.ReadLine();
+
+                    retourRedenen = retourRedenen + "$" + terugTeGeven + " : " + reden + "\r\n";
+
+                    dagTotaalTerug = terugTeGeven;
+
+                    Console.WriteLine("Druk op <ENTER> om door te gaan.");
+                    Console.ReadLine();
                 }
-                // TODO: If-statement corrigeren
-                else if (keuze == 3)
+                else if (keuze == "3")
                 {
-                    // TODO: Afmaken
+                    Console.WriteLine("======= DAG TOTALEN ========");
+                    Console.WriteLine("In kassa begin:   " + bedragInKassaBegin);
+                    Console.WriteLine("Verkocht:         " + dagTotaal);
+                    Console.WriteLine("In kassa:         " + (bedragInKassaBegin + dagTotaal - dagTotaalTerug));
+                    Console.WriteLine("Retour:           " + dagTotaalTerug);
+                    Console.WriteLine("Retour redenen: \n" + retourRedenen);
+
+                    Console.WriteLine("Druk op <ENTER> om door te gaan.");
+                    Console.ReadLine();
+
                 }
             }
             Console.WriteLine("Hoeveel zit er nu in de kassa?");
